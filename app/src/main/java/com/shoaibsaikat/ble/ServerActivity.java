@@ -124,8 +124,8 @@ public class ServerActivity extends AppCompatActivity {
     }
     
     private void startGattServer() {
-        if (mGattServer == null)
-            return;
+              /* if (mGattServer == null)  The part I commented was the reason why your app returns null gatt server/service. Delete it or fix it to something like mGattServer!=null
+            return;*/ //Note: It is totally natural to ble scan taking a while. Let it some time to decode radio signals
         mGattServer = mBluetoothManager.openGattServer(getApplicationContext(), gattServerCallback);
         for (int i = 0; i < mAdvertisingServices.size(); i++) {
             mGattServer.addService(mAdvertisingServices.get(i));
